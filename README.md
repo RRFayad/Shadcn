@@ -49,7 +49,21 @@
 
 - It's a Tailwind feat - We just added the "dark" className in the layout.tsx
 
+#### 6. Tidying up the landing page styles and link to login and signup pages
+
+##### Tailwind Groups Styles (creating defaults)
+
+- Remember TW has base (for html tags), utilities (util classnames - like tw itself, bg standing for background-color) and components (e.g.: .btn for a specific button) layers
+
+- We set this in global.css
+
 #### Next New Concepts During the Course
 
 - Routing Groups - Naming the folder wrapped in () will not affect the URL
+
   - e.g.: Our landing page in the (logged-out) folder
+
+- layout.tsx
+  - Will render the group, so we are building a layout for our logged out route group
+
+* Stopped at 09:05
