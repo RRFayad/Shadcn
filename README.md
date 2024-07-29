@@ -34,3 +34,22 @@
 
 - We can run the given CLI or copy and paste the whole code
   - Now we have an ui folder with the button code :)
+
+## 2. Building the Landing Page
+
+#### 5. Add the landing page text and buttons
+
+- We are gonna start on our landing page, creating the dark mode and light mode
+
+##### Setting Fonts
+
+- Changed fonts in the layout.tsx
+
+##### Dark Mode
+
+- It's a Tailwind feat - We just added the "dark" className in the layout.tsx
+
+#### Next New Concepts During the Course
+
+- Routing Groups - Naming the folder wrapped in () will not affect the URL
+  - e.g.: Our landing page in the (logged-out) folder
