@@ -76,6 +76,10 @@
   - As we also want to change our buttons, actually we want to update our:
     - primary color (both on light and dark) and primary-foregroung (in HSL value)
 
+#### 8. Light and dark mode toggle with a Tooltip
+
+- Implemented light and dark mode toggle, check the Tooltip component
+
 #### Shadcn/ui Components:
 
 ##### Buttons
@@ -88,6 +92,25 @@
     <Link href={"/sign-up"}>Sign Up</Link>
   </Button>
   ```
+
+##### Tooltip (used in dark/light mode btn)
+
+```javascript
+<TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger
+      className={className}
+      onClick={() => {
+        setIsDarkMode((prevState) => !prevState);
+        document.body.classList.toggle("dark");
+      }}
+    >
+      {isDarkMode ? <MoonIcon /> : <SunIcon />}
+    </TooltipTrigger>
+    <TooltipContent>{isDarkMode ? "Enable light mode" : "Enable dark mode"}</TooltipContent>
+  </Tooltip>
+</TooltipProvider>
+```
 
 #### Next New Concepts During the Course
 
@@ -102,3 +125,4 @@
 
 - `<small>Some text here</small>`: small tag is for small text, such as those 'copyrights' on the footer
 - "tracking-wider" is the tailwind for letter-spacing
+- `className="fixed right-2 top-[calc(50%-12px)]"` Just to show to to be specific in a measure - We wanted to center the light/dark icon, so 24px was its full size, and then we calculated its half to be on the center
