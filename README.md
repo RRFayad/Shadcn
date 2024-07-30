@@ -88,6 +88,40 @@
 
 - Created login route and implemented the Card
 
+#### 10. Create the login form
+
+- We installed the form component, which also installed React-hook-form and zod
+
+- For the form, we have some steps:
+  1. Create our form schema with zod;
+  ```javascript
+  const formSchema = z.object({
+    email: z.string().email(),
+    password: z.string(),
+  });
+  ```
+  2. Define the Form - hokking it up with the zod resolver
+  ```javascript
+  const form =
+    useForm <
+    z.infer <
+    typeof formSchema >>
+      {
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+          email: "",
+          password: "",
+        },
+      };
+  ```
+  3. Create the submitHandler
+  ```javascript
+  const submitHandler = () => {
+    console.log("Login Validated");
+  };
+  ```
+  4. Build he form (**Look at (or probably copy it to begin) Shadcn Docs to it, as it's a lot of stuff for each FormField**)
+
 #### Shadcn/ui Components:
 
 ##### Buttons
