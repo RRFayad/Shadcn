@@ -61,11 +61,26 @@
 
 - We have some icon form lucide-react (that comes with Shadcn - We could use fontIcon or some other library)
 
+#### 7. Shadcn ui theme
+
+- We are going to customize the ShadcnUI theme
+
+  - Specifically, our default button to be in our theme color (pink)
+
+- In Shadcn theme page, we can set the:
+  - style;
+  - color;
+  - radius;
+  - mode;
+- So, about the general theme, we set it, copy the code, and change the base in out globals.css;
+  - As we also want to change our buttons, actually we want to update our:
+    - primary color (both on light and dark) and primary-foregroung (in HSL value)
+
 #### Shadcn/ui Components:
 
 ##### Buttons
 
-- Check variant attribute
+- Check variant props
 - asChild: Let us style the button child as a button, e.g.:
 
   ```javascript
@@ -86,3 +101,4 @@
 #### Other Observations During the Course
 
 - `<small>Some text here</small>`: small tag is for small text, such as those 'copyrights' on the footer
+- "tracking-wider" is the tailwind for letter-spacing
