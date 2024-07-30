@@ -80,6 +80,14 @@
 
 - Implemented light and dark mode toggle, check the Tooltip component
 
+## 3. Login Page
+
+#### 9. Add the login page and card
+
+- We will work with Shadcn Card and Form
+
+- Created login route and implemented the Card
+
 #### Shadcn/ui Components:
 
 ##### Buttons
@@ -110,6 +118,25 @@
     <TooltipContent>{isDarkMode ? "Enable light mode" : "Enable dark mode"}</TooltipContent>
   </Tooltip>
 </TooltipProvider>
+```
+
+##### Card
+
+```javascript
+<Card className="w-full max-w-sm">
+  <CardHeader>
+    <CardTitle>Login</CardTitle>
+    <CardDescription>Login to your SupportMe account</CardDescription>
+  </CardHeader>
+  <CardContent>Login Form</CardContent>
+  {/*CardFooter is already display:flex*/}
+  <CardFooter className="justify-between">
+    <small>Don't have an account?</small>
+    <Button asChild variant={"outline"} size={"sm"}>
+      <Link href="/sign-up">Sign Up</Link>
+    </Button>
+  </CardFooter>
+</Card>
 ```
 
 #### Next New Concepts During the Course
