@@ -57,6 +57,23 @@
 
 - We set this in global.css
 
+##### Icons - Lucide
+
+- We have some icon form lucide-react (that comes with Shadcn - We could use fontIcon or some other library)
+
+#### Shadcn/ui Components:
+
+##### Buttons
+
+- Check variant attribute
+- asChild: Let us style the button child as a button, e.g.:
+
+  ```javascript
+  <Button variant={"outline"} asChild>
+    <Link href={"/sign-up"}>Sign Up</Link>
+  </Button>
+  ```
+
 #### Next New Concepts During the Course
 
 - Routing Groups - Naming the folder wrapped in () will not affect the URL
@@ -66,4 +83,6 @@
 - layout.tsx
   - Will render the group, so we are building a layout for our logged out route group
 
-* Stopped at 09:05
+#### Other Observations During the Course
+
+- `<small>Some text here</small>`: small tag is for small text, such as those 'copyrights' on the footer
