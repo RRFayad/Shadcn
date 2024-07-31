@@ -93,14 +93,18 @@
 - We installed the form component, which also installed React-hook-form and zod
 
 - For the form, we have some steps:
+
   1. Create our form schema with zod;
+
   ```javascript
   const formSchema = z.object({
     email: z.string().email(),
     password: z.string(),
   });
   ```
-  2. Define the Form - hokking it up with the zod resolver
+
+  2. Define the Form - hooking it up with the zod resolver
+
   ```javascript
   const form =
     useForm <
@@ -114,13 +118,48 @@
         },
       };
   ```
+
   3. Create the submitHandler
+
   ```javascript
   const submitHandler = () => {
     console.log("Login Validated");
   };
   ```
+
   4. Build he form (**Look at (or probably copy it to begin) Shadcn Docs to it, as it's a lot of stuff for each FormField**)
+
+  ```javascript
+  <Form {...form}>
+    <form onSubmit={form.handleSubmit(submitHandler)}>
+      <FormField
+        control={form.control} // What attaches to our form hook
+        name="email"
+        // render() returns what will be renderd on the screen
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Email</FormLabel>
+            <FormControl>
+              <Input
+                placeholder="john@doe.com"
+                // type="email"
+                {...field}
+              />
+            </FormControl>
+            <FormDescription>This is the email you signed up to SupportMe</FormDescription>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+    </form>
+  </Form>
+  ```
+
+  4.1. Some Form Obs and customizations
+
+  - We can see the Form has its own context to control and display validation errors
+    - We also adjusted the colors in global css
+  - **Important:** Shadcn uses the form validation in the client side, so in a Full Stack application, I think the best approach is to create the zod schema in a separate file, to use it oth in the client side and in the server side
 
 #### Shadcn/ui Components:
 
@@ -184,6 +223,10 @@
 
 #### Other Observations During the Course
 
+- About Shadcn Theme and Styles: Shadcn configs our tailwind config with customized colors which we can change and use (such as primary, destructive etc)
+
 - `<small>Some text here</small>`: small tag is for small text, such as those 'copyrights' on the footer
+
 - "tracking-wider" is the tailwind for letter-spacing
+
 - `className="fixed right-2 top-[calc(50%-12px)]"` Just to show to to be specific in a measure - We wanted to center the light/dark icon, so 24px was its full size, and then we calculated its half to be on the center

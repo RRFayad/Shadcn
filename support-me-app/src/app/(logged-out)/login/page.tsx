@@ -13,7 +13,16 @@ import {
   CardDescription,
   CardFooter,
 } from "@/components/ui/card";
-import { Form } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { PersonStandingIcon } from "lucide-react";
 
 const formSchema = z.object({
@@ -44,7 +53,50 @@ function LoginPage() {
         </CardHeader>
         <CardContent>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(submitHandler)}></form>
+            <form
+              className="flex flex-col gap-4"
+              onSubmit={form.handleSubmit(submitHandler)}
+            >
+              <FormField
+                control={form.control} // What attaches to our form hook
+                name="email"
+                // render() returns what will be renderd on the screen
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="john@doe.com"
+                        type="email"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormDescription>
+                      This is the email you signed up to SupportMe
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Password"
+                        type="password"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit">Login</Button>
+            </form>
           </Form>
         </CardContent>
         {/*CardFooter is already display:flex*/}
