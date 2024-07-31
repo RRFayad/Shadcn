@@ -169,6 +169,36 @@ The sign up page will have form complex inputs to be set
 
 - Just created the Sign Up pre config from what we already have
 
+#### 12. Account type Select field
+
+- The account type will be Company or Personal
+
+  - If company, it will render different inputs
+
+```javascript
+<FormField
+  control={form.control}
+  name="accountType"
+  render={({ field }) => (
+    <FormItem>
+      <FormLabel>Account Type</FormLabel>
+      <Select onValueChange={field.onChange}>
+        <FormControl>
+          <SelectTrigger>
+            <SelectValue placeholder="Select an account type" />
+          </SelectTrigger>
+        </FormControl>
+        <SelectContent>
+          <SelectItem value="personal">Personal</SelectItem>
+          <SelectItem value="company">Company</SelectItem>
+        </SelectContent>
+      </Select>
+      <FormMessage />
+    </FormItem>
+  )}
+/>
+```
+
 ## Shadcn/ui Components:
 
 ##### Buttons

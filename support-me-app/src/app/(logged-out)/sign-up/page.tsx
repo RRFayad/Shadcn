@@ -24,9 +24,19 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { PersonStandingIcon } from "lucide-react";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 
 const formSchema = z.object({
   email: z.string().email(),
+  accountType: z.enum(["personal", "company"]),
+  companyName: z.string().optional(),
+  numberOfEmployees: z.coerce.number().optional(), // coerce is for converting to number
 });
 
 function SignupPage() {
@@ -68,6 +78,27 @@ function SignupPage() {
                         {...field}
                       />
                     </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="accountType"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Account Type</FormLabel>
+                    <Select onValueChange={field.onChange}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select an account type" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="personal">Personal</SelectItem>
+                        <SelectItem value="company">Company</SelectItem>
+                      </SelectContent>
+                    </Select>
                     <FormMessage />
                   </FormItem>
                 )}
