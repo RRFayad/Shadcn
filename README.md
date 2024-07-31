@@ -244,6 +244,10 @@ const formSchema = z
   });
 ```
 
+#### Adding the date of birth logic validation
+
+- Implemented first the validation
+
 ## Shadcn/ui Components:
 
 ##### Buttons
@@ -293,6 +297,32 @@ const formSchema = z
     </Button>
   </CardFooter>
 </Card>
+```
+
+##### Form Field with Select (inside a form)
+
+- I did not create form here as it requires more logic
+
+```javascript
+                <FormField
+                control={form.control}
+                name="accountType"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Account Type</FormLabel>
+                    <Select onValueChange={field.onChange}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select an account type" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="personal">Personal</SelectItem>
+                        <SelectItem value="company">Company</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
 ```
 
 ## Next New Concepts During the Course

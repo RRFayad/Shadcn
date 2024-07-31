@@ -38,6 +38,15 @@ const formSchema = z
     accountType: z.enum(["personal", "company"]),
     companyName: z.string().optional(),
     numberOfEmployees: z.coerce.number().optional(), // coerce is for converting to number
+    dateOfBirth: z.date().refine((date) => {
+      const today = new Date();
+      const eighteenYrsAgo = new Date(
+        today.getFullYear() - 18,
+        today.getMonth(),
+        today.getDate(),
+      );
+      return date <= eighteenYrsAgo; // When the callback returns true we say the validation failed
+    }, "You must be at least 18 years old"),
   })
   .superRefine((data, context) => {
     if (data.accountType === "company" && !data.companyName) {
