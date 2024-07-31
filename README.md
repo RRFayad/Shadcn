@@ -199,6 +199,51 @@ The sign up page will have form complex inputs to be set
 />
 ```
 
+#### 13. Form Conditional Fields - Rendering and Validation
+
+- We want to set Company name and Employees if its a professional account
+
+- In our zod schema, we defined the fileds as optional:
+
+  ```javascript
+  const formSchema = z.object({
+    email: z.string().email(),
+    accountType: z.enum(["personal", "company"]),
+    companyName: z.string().optional(),
+    numberOfEmployees: z.coerce.number().optional(), // coerce is for converting to number
+  });
+  ```
+
+- Now, our "state" is watch with _form.watch_: `const accountype = form.watch("accountType");`
+
+- Conditional fields validation - the superRefine method:
+
+```javascript
+const formSchema = z
+  .object({
+    email: z.string().email(),
+    accountType: z.enum(["personal", "company"]),
+    companyName: z.string().optional(),
+    numberOfEmployees: z.coerce.number().optional(), // coerce is for converting to number
+  })
+  .superRefine((data, context) => {
+    if (data.accountType === "company" && !data.companyName) {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["companyName"],
+        message: "Company name is required",
+      });
+    }
+    if (data.accountType === "company" && (!data.numberOfEmployees || data.numberOfEmployees < 0)) {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["numberOfEmployees"],
+        message: "Number of Employees is required",
+      });
+    }
+  });
+```
+
 ## Shadcn/ui Components:
 
 ##### Buttons

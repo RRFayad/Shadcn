@@ -32,12 +32,32 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 
-const formSchema = z.object({
-  email: z.string().email(),
-  accountType: z.enum(["personal", "company"]),
-  companyName: z.string().optional(),
-  numberOfEmployees: z.coerce.number().optional(), // coerce is for converting to number
-});
+const formSchema = z
+  .object({
+    email: z.string().email(),
+    accountType: z.enum(["personal", "company"]),
+    companyName: z.string().optional(),
+    numberOfEmployees: z.coerce.number().optional(), // coerce is for converting to number
+  })
+  .superRefine((data, context) => {
+    if (data.accountType === "company" && !data.companyName) {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["companyName"],
+        message: "Company name is required",
+      });
+    }
+    if (
+      data.accountType === "company" &&
+      (!data.numberOfEmployees || data.numberOfEmployees < 0)
+    ) {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["numberOfEmployees"],
+        message: "Number of Employees is required",
+      });
+    }
+  });
 
 function SignupPage() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -46,6 +66,8 @@ function SignupPage() {
       email: "",
     },
   }); // It's for zod to infer the type of our Schema to the form data
+
+  const accountype = form.watch("accountType");
 
   const submitHandler = () => {
     console.log("Login Validated");
@@ -103,6 +125,41 @@ function SignupPage() {
                   </FormItem>
                 )}
               />
+              {accountype === "company" && (
+                <>
+                  <FormField
+                    control={form.control}
+                    name="companyName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Company Name</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Company name" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="numberOfEmployees"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Employees Quantity</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="Employees"
+                            type="number"
+                            min={0}
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </>
+              )}
               <Button type="submit">Sign Up</Button>
             </form>
           </Form>
