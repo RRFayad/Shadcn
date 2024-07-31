@@ -248,6 +248,8 @@ const formSchema = z
 
 - Implemented first the validation
 
+- Installed and Copied Calender and Popover
+
 ## Shadcn/ui Components:
 
 ##### Buttons
