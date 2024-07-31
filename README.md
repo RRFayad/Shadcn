@@ -161,7 +161,15 @@
     - We also adjusted the colors in global css
   - **Important:** Shadcn uses the form validation in the client side, so in a Full Stack application, I think the best approach is to create the zod schema in a separate file, to use it oth in the client side and in the server side
 
-#### Shadcn/ui Components:
+## 4. Sign Up Page
+
+The sign up page will have form complex inputs to be set
+
+#### 11. Add the sign up page and card
+
+- Just created the Sign Up pre config from what we already have
+
+## Shadcn/ui Components:
 
 ##### Buttons
 
@@ -212,7 +220,7 @@
 </Card>
 ```
 
-#### Next New Concepts During the Course
+## Next New Concepts During the Course
 
 - Routing Groups - Naming the folder wrapped in () will not affect the URL
 
@@ -221,7 +229,7 @@
 - layout.tsx
   - Will render the group, so we are building a layout for our logged out route group
 
-#### Other Observations During the Course
+## Other Observations During the Course
 
 - About Shadcn Theme and Styles: Shadcn configs our tailwind config with customized colors which we can change and use (such as primary, destructive etc)
 
