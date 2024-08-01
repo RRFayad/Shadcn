@@ -205,12 +205,16 @@ function SignupPage() {
                       <PopoverContent className="w-auto p-0" align="start">
                         <Calendar
                           mode="single"
+                          defaultMonth={field.value}
                           selected={field.value}
                           onSelect={field.onChange}
-                          disabled={(date) =>
-                            date > new Date() || date < new Date("1900-01-01")
-                          }
+                          // disabled={(date) =>
+                          //   date > new Date() || date < new Date("1900-01-01")
+                          // }
                           initialFocus
+                          captionLayout="dropdown-buttons" // Needs to have a fromSomething (date, month, year) and toSomething
+                          fromDate={new Date(1940, 0, 1)}
+                          toDate={new Date()}
                         />
                       </PopoverContent>
                     </Popover>

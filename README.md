@@ -244,7 +244,7 @@ const formSchema = z
   });
 ```
 
-#### Adding the date of birth logic validation
+#### Adding the date of birth logic validation & Add the date of birth field with Popover
 
 - Implemented first the validation
 
@@ -325,6 +325,29 @@ const formSchema = z
                     </Select>
                     <FormMessage />
                   </FormItem>
+```
+
+##### Calendar
+
+- I kinda simply copied the calendar from the docs, and Tom showed some p´rops, such as:  
+  -from and to (fromMonth, fromYear, toDate etc) to define the calendar range
+  - Disable, which receives a callback and we can create a logic to disable some days (such as weekend for example)
+  - we are gonna create a dropdown menu, which is this captionLayout below, and it _needs_ the fromSomehting (fromDate, or fromMont, fromYear) and toSomething to work
+
+```javascript
+<Calendar
+  mode="single"
+  defaultMonth={field.value}
+  selected={field.value}
+  onSelect={field.onChange}
+  // disabled={(date) =>
+  //   date > new Date() || date < new Date("1900-01-01")
+  // }
+  initialFocus
+  captionLayout="dropdown-buttons" // Needs to have a fromSomething (date, month, year) and toSomething
+  fromDate={new Date(1940, 0, 1)}
+  toDate={new Date()}
+/>
 ```
 
 ## Next New Concepts During the Course
