@@ -250,6 +250,15 @@ const formSchema = z
 
 - Installed and Copied Calender and Popover
 
+- Render selected date
+
+  - The example from the docs comes wit the function prepared, we only have to `import { format } from "date-fns";`
+
+- custom dropdowns for month / year selection
+  - We will improve the Shadcn component, overwriting it to use the Shadcn Select as the calendar dropdowns
+    - Updated the caption_label tw calss to hidden;
+    - Started Creating the dropdowns
+
 ## Shadcn/ui Components:
 
 ##### Buttons
@@ -329,10 +338,11 @@ const formSchema = z
 
 ##### Calendar
 
-- I kinda simply copied the calendar from the docs, and Tom showed some p´rops, such as:  
-  -from and to (fromMonth, fromYear, toDate etc) to define the calendar range
+- I kinda simply copied the calendar from the docs, and Tom showed some p´rops, such as:
+  - From and to (fromMonth, fromYear, toDate etc) to define the calendar range
   - Disable, which receives a callback and we can create a logic to disable some days (such as weekend for example)
   - we are gonna create a dropdown menu, which is this captionLayout below, and it _needs_ the fromSomehting (fromDate, or fromMont, fromYear) and toSomething to work
+  - defaultMonth={field.value} - Make sthe calendar to opens in the selected month (instead of today's month)
 
 ```javascript
 <Calendar

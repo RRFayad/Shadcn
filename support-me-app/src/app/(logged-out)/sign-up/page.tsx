@@ -4,6 +4,7 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { cn } from "@/lib/utils";
+import { format } from "date-fns";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -194,7 +195,7 @@ function SignupPage() {
                             )}
                           >
                             {field.value ? (
-                              "yyyy-mm-dd" //format(field.value, "PPP")
+                              format(field.value, "PPP")
                             ) : (
                               <span>Pick a date</span>
                             )}
@@ -205,7 +206,7 @@ function SignupPage() {
                       <PopoverContent className="w-auto p-0" align="start">
                         <Calendar
                           mode="single"
-                          defaultMonth={field.value}
+                          // defaultMonth={field.value}
                           selected={field.value}
                           onSelect={field.onChange}
                           // disabled={(date) =>
