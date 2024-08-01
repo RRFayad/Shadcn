@@ -258,6 +258,7 @@ const formSchema = z
   - We will improve the Shadcn component, overwriting it to use the Shadcn Select as the calendar dropdowns
     - Updated the caption_label tw calss to hidden;
     - Started Creating the dropdowns
+    - Too comlex logic tbh
 
 ## Shadcn/ui Components:
 

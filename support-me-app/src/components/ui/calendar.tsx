@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { DayPicker } from "react-day-picker";
+import { DayPicker, useDayPicker, useNavigation } from "react-day-picker";
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
@@ -64,13 +64,20 @@ function Calendar({
         day_range_middle:
           "aria-selected:bg-accent aria-selected:text-accent-foreground",
         day_hidden: "invisible",
+        caption_dropdowns: "flex gap-1",
         ...classNames,
       }}
       components={{
         IconLeft: ({ ...props }) => <ChevronLeft className="h-4 w-4" />,
         IconRight: ({ ...props }) => <ChevronRight className="h-4 w-4" />,
+
         Dropdown: (dropdownProps) => {
+          const { currentMonth } = useNavigation();
+          const { fromYear, fromMonth, fromDate, toYear, toMonth, toDate } =
+            useDayPicker();
+
           let selectValues: { value: string; label: string }[] = [];
+
           if (dropdownProps.name === "months") {
             selectValues = Array.from({ length: 12 }, (_, i) => {
               return {
@@ -78,10 +85,32 @@ function Calendar({
                 label: format(new Date(new Date().getFullYear(), i, 1), "MMM"),
               };
             });
+          } else if (dropdownProps.name === "years") {
+            const earliestYear =
+              fromYear || fromMonth?.getFullYear() || fromDate?.getFullYear();
+            const latestYear =
+              toYear || toMonth?.getFullYear() || toDate?.getFullYear();
+
+            if (earliestYear && latestYear) {
+              const yearsLength = latestYear - earliestYear + 1;
+
+              selectValues = Array.from({ length: yearsLength }, (_, i) => {
+                return {
+                  value: (earliestYear + i).toString(),
+                  label: (earliestYear + i).toString(),
+                };
+              }).reverse();
+            }
           }
+
+          const caption = format(
+            currentMonth,
+            dropdownProps.name === "months" ? "MMM" : "yyyy",
+          );
+
           return (
             <Select>
-              <SelectTrigger className="w-[180px]">dropdown</SelectTrigger>
+              <SelectTrigger className="">{caption}</SelectTrigger>
               <SelectContent>
                 {selectValues.map((selectValue) => (
                   <SelectItem key={selectValue.value} value={selectValue.value}>
