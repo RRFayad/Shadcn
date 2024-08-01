@@ -262,6 +262,15 @@ const formSchema = z
     - Too comlex logic tbh
   - Hooking Up the selected Year and Month to the logic
 
+#### Adding the Password and password confirm fields
+
+- We implemented the logic
+
+#### Important about validation using zod:
+
+- When we use superRefine(), its validation runs only after the direct validations are alright.
+  - So to make them all run at once, we have to split the formSchemas and then merge them at once (check form-schemas.ts file)
+
 ## Shadcn/ui Components:
 
 ##### Buttons

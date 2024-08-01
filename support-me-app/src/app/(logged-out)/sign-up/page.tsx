@@ -1,8 +1,10 @@
 "use client";
 import Link from "next/link";
+
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { lpFormSchema } from "@/lib/form-schemas";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 
@@ -41,45 +43,9 @@ import {
 import { Calendar } from "@/components/ui/calendar";
 import { CalendarIcon } from "lucide-react";
 
-const formSchema = z
-  .object({
-    email: z.string().email(),
-    accountType: z.enum(["personal", "company"]),
-    companyName: z.string().optional(),
-    numberOfEmployees: z.coerce.number().optional(), // coerce is for converting to number
-    dateOfBirth: z.date().refine((date) => {
-      const today = new Date();
-      const eighteenYrsAgo = new Date(
-        today.getFullYear() - 18,
-        today.getMonth(),
-        today.getDate(),
-      );
-      return date <= eighteenYrsAgo; // When the callback returns true we say the validation failed
-    }, "You must be at least 18 years old"),
-  })
-  .superRefine((data, context) => {
-    if (data.accountType === "company" && !data.companyName) {
-      context.addIssue({
-        code: z.ZodIssueCode.custom,
-        path: ["companyName"],
-        message: "Company name is required",
-      });
-    }
-    if (
-      data.accountType === "company" &&
-      (!data.numberOfEmployees || data.numberOfEmployees < 0)
-    ) {
-      context.addIssue({
-        code: z.ZodIssueCode.custom,
-        path: ["numberOfEmployees"],
-        message: "Number of Employees is required",
-      });
-    }
-  });
-
 function SignupPage() {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof lpFormSchema>>({
+    resolver: zodResolver(lpFormSchema),
     defaultValues: {
       email: "",
     },
@@ -222,6 +188,40 @@ function SignupPage() {
                     <FormDescription>
                       Your date of birth is used to calculate your age.
                     </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="••••••••"
+                        type="password"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="passwordConfirm"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Confirm Password</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="••••••••"
+                        type="password"
+                        {...field}
+                      />
+                    </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
