@@ -255,10 +255,12 @@ const formSchema = z
   - The example from the docs comes wit the function prepared, we only have to `import { format } from "date-fns";`
 
 - custom dropdowns for month / year selection
+
   - We will improve the Shadcn component, overwriting it to use the Shadcn Select as the calendar dropdowns
     - Updated the caption_label tw calss to hidden;
     - Started Creating the dropdowns
     - Too comlex logic tbh
+  - Hooking Up the selected Year and Month to the logic
 
 ## Shadcn/ui Components:
 
