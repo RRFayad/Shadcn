@@ -28,9 +28,11 @@ export const lpFormSchema = z
         return regex.test(password);
       }, "Password must contain at least 1 special character and 1 uppercase letter"),
     passwordConfirm: z.string(),
-    acceptTerms: z.boolean({
-      required_error: "You must accept the terms and conditions",
-    }),
+    acceptTerms: z
+      .boolean({
+        required_error: "You must accept the terms and conditions",
+      })
+      .refine((checked) => checked, "You must accept the terms and conditions"),
   })
   .superRefine((data, context) => {
     // superRefine runs only after the "first level validations"
