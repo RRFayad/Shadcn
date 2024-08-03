@@ -290,6 +290,12 @@ const formSchema = z
   };
 ```
 
+## 5. Dashboard Layout
+
+#### 24. Create the dashboard layout
+
+- Created the page structure mainly in the layut file, nice to check the grid structure (also mentioned in the style, below, in this readme file)
+
 ## Shadcn/ui Components:
 
 ##### Buttons
@@ -403,6 +409,16 @@ const formSchema = z
 ## Other Observations During the Course
 
 - About Shadcn Theme and Styles: Shadcn configs our tailwind config with customized colors which we can change and use (such as primary, destructive etc)
+
+#### General Styles / Front End concepts
+
+- Tom creates his layouts using divs
+
+  - Also in the example below, `grid-cols-[250px_1fr]` stands for the sidebar with 250px and 1fr to fill the remaining space
+
+```javascript
+return <div className="grid grid-cols-[250px_1fr]"></div>;
+```
 
 - `<small>Some text here</small>`: small tag is for small text, such as those 'copyrights' on the footer
 
