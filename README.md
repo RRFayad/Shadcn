@@ -271,6 +271,10 @@ const formSchema = z
 - When we use superRefine(), its validation runs only after the direct validations are alright.
   - So to make them all run at once, we have to split the formSchemas and then merge them at once (check form-schemas.ts file)
 
+#### 21. Creating a custom PasswordInput component
+
+- Creted our custom password-input component
+
 ## Shadcn/ui Components:
 
 ##### Buttons
@@ -390,3 +394,7 @@ const formSchema = z
 - "tracking-wider" is the tailwind for letter-spacing
 
 - `className="fixed right-2 top-[calc(50%-12px)]"` Just to show to to be specific in a measure - We wanted to center the light/dark icon, so 24px was its full size, and then we calculated its half to be on the center
+
+##### Password input style
+
+Check the password-input.tsx, which has a toggle passwordIsShown function (input type conditionally being "password" or "text"), and the input padding to avoid the icon overlap the pw text
