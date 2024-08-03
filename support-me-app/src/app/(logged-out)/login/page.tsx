@@ -25,6 +25,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/ui/password-input";
 import { PersonStandingIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -32,6 +33,7 @@ const formSchema = z.object({
 });
 
 function LoginPage() {
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -40,8 +42,9 @@ function LoginPage() {
     },
   }); // It's for zod to infer the type of our Schema to the form data
 
-  const submitHandler = () => {
+  const submitHandler = (formData: z.infer<typeof formSchema>) => {
     console.log("Login Validated");
+    router.push("/dashboard");
   };
 
   return (

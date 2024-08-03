@@ -43,19 +43,26 @@ import {
 import { Calendar } from "@/components/ui/calendar";
 import { CalendarIcon } from "lucide-react";
 import { PasswordInput } from "@/components/ui/password-input";
+import { Checkbox } from "@/components/ui/checkbox";
+import { useRouter } from "next/navigation";
 
 function SignupPage() {
+  const router = useRouter();
   const form = useForm<z.infer<typeof lpFormSchema>>({
     resolver: zodResolver(lpFormSchema),
     defaultValues: {
       email: "",
+      password: "",
+      passwordConfirm: "",
+      companyName: "",
     },
   }); // It's for zod to infer the type of our Schema to the form data
 
   const accountype = form.watch("accountType");
 
-  const submitHandler = () => {
-    console.log("Login Validated");
+  const submitHandler = (formData: z.infer<typeof lpFormSchema>) => {
+    console.log(formData);
+    router.push("/dashboard");
   };
 
   return (
@@ -137,6 +144,7 @@ function SignupPage() {
                             type="number"
                             min={0}
                             {...field}
+                            value={field.value ?? ""}
                           />
                         </FormControl>
                         <FormMessage />
@@ -219,6 +227,34 @@ function SignupPage() {
                   </FormItem>
                 )}
               />
+              <FormField
+                control={form.control}
+                name="acceptTerms"
+                render={({ field }) => (
+                  <FormItem>
+                    <div className="flex items-center justify-start gap-2">
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                      <FormLabel>I accept the terms and conditions</FormLabel>
+                    </div>
+                    <FormDescription>
+                      By signing you you agree to our{" "}
+                      <Link
+                        href="/terms-and-conditions"
+                        className="font-bold underline"
+                      >
+                        Terms and Conditions
+                      </Link>
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
               <Button type="submit">Sign Up</Button>
             </form>
           </Form>

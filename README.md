@@ -275,6 +275,21 @@ const formSchema = z
 
 - Creted our custom password-input component
 
+##### Terms and Conditions CheckBox
+
+- Nothing new here
+
+#### Handling Form data:
+
+- remember to infer the type of he formData as the infered zod schema type
+
+```javascript
+    const submitHandler = (formData: z.infer<typeof lpFormSchema>) => {
+    console.log(formData);
+    router.push("/dashboard");
+  };
+```
+
 ## Shadcn/ui Components:
 
 ##### Buttons
