@@ -1,4 +1,5 @@
 import React from "react";
+import MainMenu from "./components/main-menu";
 
 function dashboardLayout({ children }: { children: React.ReactNode }) {
   {
@@ -6,7 +7,8 @@ function dashboardLayout({ children }: { children: React.ReactNode }) {
   }
   return (
     <div className="grid h-screen grid-cols-[250px_1fr]">
-      <div className="overflow-auto bg-muted p-4">Side Panel</div>
+      <MainMenu />
+
       <div className="overflow-auto px-4 py-2">
         <h1 className="pb-4">Welcome Back, Renan!</h1>
         {children}
