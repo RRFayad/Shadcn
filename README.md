@@ -438,6 +438,8 @@ return <div className="grid grid-cols-[250px_1fr]"></div>;
 
 - Dark Mode: We set a component that toggles the 'dark' class in the body (check light-dark-toggle.tsx)
 
+- ml-auto set the element to the right?
+
 - "tracking-wider" is the tailwind for letter-spacing
 
 - `className="fixed right-2 top-[calc(50%-12px)]"` Just to show to to be specific in a measure - We wanted to center the light/dark icon, so 24px was its full size, and then we calculated its half to be on the center
