@@ -16,7 +16,7 @@ function EmployeesStats() {
             <div className="text-5xl font-bold">100</div>
           </div>
           <div>
-            <Button asChild size={"sm"}>
+            <Button asChild size={"xs"}>
               <Link href={"/dashboard/employees"}>View All</Link>
             </Button>
           </div>

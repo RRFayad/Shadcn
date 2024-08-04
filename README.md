@@ -311,6 +311,8 @@ const formSchema = z
 </Tabs>
 ```
 
+#### Extending the shadcn ui Button component
+
 ## Shadcn/ui Components:
 
 ##### Buttons
