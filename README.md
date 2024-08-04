@@ -296,6 +296,21 @@ const formSchema = z
 
 - Created the page structure mainly in the layut file, nice to check the grid structure (also mentioned in the style, below, in this readme file)
 
+## 6. My Dashboard Page
+
+#### Adding tabs in the dashboard
+
+```javascript
+<Tabs defaultValue="employees">
+  <TabsList>
+    <TabsTrigger value="employees">Employees Stats</TabsTrigger>
+    <TabsTrigger value="teams">Teams Stats</TabsTrigger>
+  </TabsList>
+  <TabsContent value="employees">Content for employyes here</TabsContent>
+  <TabsContent value="teams">Content for teams here</TabsContent>
+</Tabs>
+```
+
 ## Shadcn/ui Components:
 
 ##### Buttons
@@ -303,11 +318,11 @@ const formSchema = z
 - Check variant props
 - asChild: Let us style the button child as a button, e.g.:
 
-  ```javascript
-  <Button variant={"outline"} asChild>
-    <Link href={"/sign-up"}>Sign Up</Link>
-  </Button>
-  ```
+```javascript
+<Button variant={"outline"} asChild>
+  <Link href={"/sign-up"}>Sign Up</Link>
+</Button>
+```
 
 ##### Tooltip (used in dark/light mode btn)
 
