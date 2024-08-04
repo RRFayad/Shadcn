@@ -15,7 +15,7 @@ function MenuItem({ children, href }: MenuItemProps) {
 
   return (
     <Link
-      className={`block rounded-md p-2 text-muted-foreground hover:bg-white hover:text-foreground dark:hover:bg-zinc-700 ${isActive && "bg-primary text-foreground hover:bg-primary hover:text-foreground dark:hover:bg-primary"}`}
+      className={`block rounded-md p-2 text-muted-foreground hover:bg-white hover:text-foreground dark:hover:bg-zinc-700 ${isActive && "bg-primary text-primary-foreground hover:bg-primary hover:text-foreground dark:hover:bg-primary"}`}
       href={href}
     >
       {children}

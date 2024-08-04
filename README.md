@@ -412,19 +412,22 @@ const formSchema = z
 
 #### General Styles / Front End concepts
 
-- Tom creates his layouts using divs
-
+- Tom creates his layouts using grids
   - Also in the example below, `grid-cols-[250px_1fr]` stands for the sidebar with 250px and 1fr to fill the remaining space
 
 ```javascript
 return <div className="grid grid-cols-[250px_1fr]"></div>;
 ```
 
-- `<small>Some text here</small>`: small tag is for small text, such as those 'copyrights' on the footer
+- flex grow: Expands the size of the flex component to fill all space
+
+- Dark Mode: We set a component that toggles the 'dark' class in the body (check light-dark-toggle.tsx)
 
 - "tracking-wider" is the tailwind for letter-spacing
 
 - `className="fixed right-2 top-[calc(50%-12px)]"` Just to show to to be specific in a measure - We wanted to center the light/dark icon, so 24px was its full size, and then we calculated its half to be on the center
+
+- `<small>Some text here</small>`: small tag is for small text, such as those 'copyrights' on the footer
 
 ##### Password input style
 
