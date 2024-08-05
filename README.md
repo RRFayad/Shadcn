@@ -319,7 +319,11 @@ const formSchema = z
   - We are gonna work with Stacked Bar Chart
 
 - Stackbar Chart:
-  - The stackId must match (this is what makes the bars stacked )
+  - The stackId must match (this is what makes the bars stacked)
+
+#### Finishing and Styling Bar Chart
+
+- Check the work-location-trends tsx to check the styling customizations
 
 ## Shadcn/ui Components:
 
