@@ -1,3 +1,4 @@
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,6 +10,7 @@ import {
 import {
   AlertTriangleIcon,
   BadgeCheckIcon,
+  PartyPopperIcon,
   UserCheck2Icon,
   UserIcon,
   UserRoundXIcon,
@@ -17,7 +19,7 @@ import Link from "next/link";
 
 function EmployeesStats() {
   const totalEmployees = 100;
-  const employeesPresent = 70;
+  const employeesPresent = 80;
 
   return (
     <div className="grid gap-4 lg:grid-cols-3">
@@ -65,10 +67,24 @@ function EmployeesStats() {
         </CardFooter>
       </Card>
 
-      <Card className="border-pink-500">
+      <Card className="flex flex-col border-pink-500">
         <CardHeader className="pb-2">
           <CardTitle className="text-base">Employee of the month</CardTitle>
         </CardHeader>
+        <CardContent>
+          <div className="flex items-center gap-2">
+            <Avatar>
+              <AvatarImage src="https://avatars.githubusercontent.com/u/88623045" />
+              <AvatarFallback>RF</AvatarFallback>
+            </Avatar>
+
+            <div className="text-2xl">Renan Fayad</div>
+          </div>
+        </CardContent>
+        <CardFooter className="mt-auto flex items-center gap-2 text-xs text-muted-foreground">
+          <PartyPopperIcon className="text-primary" />
+          <span>Congratulations!!</span>
+        </CardFooter>
       </Card>
     </div>
   );

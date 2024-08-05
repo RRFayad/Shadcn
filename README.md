@@ -429,6 +429,11 @@ const formSchema = z
 
 #### General Styles / Front End concepts
 
+- **Must remember:** If you apply auto margins to a flex item, that item will automatically extend its specified margin to occupy the extra space in the flex container, depending on the direction in which the auto-margin is applied.
+
+  - Inside a flex element, ml-auto set the element to the right;
+  - mt-auto sets the element to the bottom;
+
 - Tom creates his layouts using grids
   - Also in the example below, `grid-cols-[250px_1fr]` stands for the sidebar with 250px and 1fr to fill the remaining space
 
@@ -439,8 +444,6 @@ return <div className="grid grid-cols-[250px_1fr]"></div>;
 - flex grow: Expands the size of the flex component to fill all space
 
 - Dark Mode: We set a component that toggles the 'dark' class in the body (check light-dark-toggle.tsx)
-
-- ml-auto set the element to the right?
 
 - "tracking-wider" is the tailwind for letter-spacing
 
