@@ -311,7 +311,15 @@ const formSchema = z
 </Tabs>
 ```
 
-#### Extending the shadcn ui Button component
+#### Creating the stacked bar chart with recharts
+
+- npm install recharts
+
+  - https://recharts.org/en-US/examples
+  - We are gonna work with Stacked Bar Chart
+
+- Stackbar Chart:
+  - The stackId must match (this is what makes the bars stacked )
 
 ## Shadcn/ui Components:
 
