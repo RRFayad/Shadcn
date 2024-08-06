@@ -91,6 +91,7 @@ function EmployeesStats() {
           </CardFooter>
         </Card>
       </div>
+
       <Card className="my-4">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-lg">

@@ -319,7 +319,10 @@ const formSchema = z
   - We are gonna work with Stacked Bar Chart
 
 - Stackbar Chart:
+
   - The stackId must match (this is what makes the bars stacked)
+
+- **Important:** charts must be client components
 
 #### Finishing and Styling Bar Chart
 
@@ -328,20 +331,31 @@ const formSchema = z
 #### Adding a pieChart
 
 ```javascript
-<ResponsiveContainer width={"100%"} height={150}>
-  <PieChart>
-    <Tooltip
-      wrapperClassName=" dark:[&_.recharts-tooltip-item]:!text-white dark:!bg-black rounded-md dark:!border-border !text-sm "
-      labelClassName="font-bold "
-    />
-    <Pie data={dataPie} dataKey={"value"} nameKey={"name"}>
-      {/*Value and name are the properties of my data*/}
-      {dataPie.map((dataItem, index) => (
-        <Cell fill={dataItem.color} key={index} />
-      ))}
-    </Pie>
-  </PieChart>
-</ResponsiveContainer>
+"use client";
+import { dataPie } from "@/lib/data-pie";
+import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
+
+function TeamsDistributionChart() {
+  return (
+    <>
+      <ResponsiveContainer width={"100%"} height={150}>
+        <PieChart>
+          <Tooltip
+            wrapperClassName=" dark:[&_.recharts-tooltip-item]:!text-white dark:!bg-black rounded-md dark:!border-border !text-sm "
+            labelClassName="font-bold "
+          />
+          <Pie data={dataPie} dataKey={"value"} nameKey={"name"}>
+            {dataPie.map((dataItem, index) => (
+              <Cell fill={dataItem.color} key={index} />
+            ))}
+          </Pie>
+        </PieChart>
+      </ResponsiveContainer>
+    </>
+  );
+}
+
+export default TeamsDistributionChart;
 ```
 
 ## Shadcn/ui Components:
