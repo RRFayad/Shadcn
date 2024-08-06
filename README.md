@@ -325,6 +325,25 @@ const formSchema = z
 
 - Check the work-location-trends tsx to check the styling customizations
 
+#### Adding a pieChart
+
+```javascript
+<ResponsiveContainer width={"100%"} height={150}>
+  <PieChart>
+    <Tooltip
+      wrapperClassName=" dark:[&_.recharts-tooltip-item]:!text-white dark:!bg-black rounded-md dark:!border-border !text-sm "
+      labelClassName="font-bold "
+    />
+    <Pie data={dataPie} dataKey={"value"} nameKey={"name"}>
+      {/*Value and name are the properties of my data*/}
+      {dataPie.map((dataItem, index) => (
+        <Cell fill={dataItem.color} key={index} />
+      ))}
+    </Pie>
+  </PieChart>
+</ResponsiveContainer>
+```
+
 ## Shadcn/ui Components:
 
 ##### Buttons
