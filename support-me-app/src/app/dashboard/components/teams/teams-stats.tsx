@@ -3,7 +3,15 @@ import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ListChecksIcon, UsersIcon } from "lucide-react";
+import { ListChecksIcon, StarIcon, UsersIcon } from "lucide-react";
+import { teamLeaders } from "@/lib/teamLeaders";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import Image from "next/image";
 
 function TeamsStats() {
   return (
@@ -28,10 +36,37 @@ function TeamsStats() {
 
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-base">Teams leaders</CardTitle>
+            <CardTitle className="flex items-center justify-between text-base">
+              <span>Teams leaders</span>
+              <StarIcon className="text-yellow-500" />
+            </CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="flex gap-2">aa</div>
+          <CardContent className="flex flex-wrap gap-2">
+            {teamLeaders.map((leader, index) => {
+              return (
+                <TooltipProvider key={index}>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Avatar>
+                        {!!leader.avatar && (
+                          <Image
+                            src={leader.avatar}
+                            alt={leader.firstName + " " + leader.lastName}
+                          />
+                        )}
+                        <AvatarFallback>
+                          {leader.firstName[0]}
+                          {leader.lastName[0]}
+                        </AvatarFallback>
+                      </Avatar>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      {leader.firstName + " " + leader.lastName}
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              );
+            })}
           </CardContent>
         </Card>
 
