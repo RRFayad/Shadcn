@@ -4,9 +4,9 @@ import MenuTitle from "./menu-title";
 import Link from "next/link";
 import LightDarkToggle from "@/components/ui/light-dark-toggle";
 
-function MainMenu() {
+function MainMenu({ className }: { className?: string }) {
   return (
-    <nav className="flex flex-col overflow-auto bg-muted p-4">
+    <nav className={`flex flex-col overflow-auto bg-muted p-4 ${className}`}>
       <header className="border-b border-b-zinc-300 pb-4 dark:border-b-black">
         <MenuTitle />
       </header>

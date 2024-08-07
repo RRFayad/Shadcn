@@ -358,6 +358,12 @@ function TeamsDistributionChart() {
 export default TeamsDistributionChart;
 ```
 
+## 7. Extras
+
+Mobile menu
+
+- Started in the layout component, with a div the only renders in mobile and hiding the web menu (and updating the grid)
+
 ## Shadcn/ui Components:
 
 ##### Buttons
