@@ -376,7 +376,14 @@ export default TeamsDistributionChart;
 - We extended the Shadcn UI to recognize if the drawer have to be rendered from bottom (default) or from right
 
 - Now we want to adjust it to close after clicked
+
   - used the context we created to handle eventHandlers in the menu item
+
+  #### Create the loading skeleton for the employees table
+
+  - Remember the Next loading page
+    - Is as simple as using the skeleton and defining its shape:
+      ` <Skeleton className="h-10 w-10 rounded-full" />`
 
 ## Shadcn/ui Components:
 
