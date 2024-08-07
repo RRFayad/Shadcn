@@ -6,8 +6,8 @@ import LightDarkToggle from "@/components/ui/light-dark-toggle";
 
 function MainMenu({ className }: { className?: string }) {
   return (
-    <nav className={`flex flex-col overflow-auto bg-muted p-4 ${className}`}>
-      <header className="border-b border-b-zinc-300 pb-4 dark:border-b-black">
+    <nav className={`flex flex-col overflow-auto p-4 md:bg-muted ${className}`}>
+      <header className="hidden border-b border-b-zinc-300 pb-4 dark:border-b-black md:block">
         <MenuTitle />
       </header>
       <ul className="flex grow flex-col py-4">

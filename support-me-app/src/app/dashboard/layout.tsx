@@ -10,13 +10,13 @@ import { useMediaQuery } from "@/hooks/use-media-query";
 function dashboardLayout({ children }: { children: React.ReactNode }) {
   const isDesktop = useMediaQuery("(min-width:768px)");
   return (
-    <div className="grid h-screen md:grid-cols-[250px_1fr]">
+    <div className="h-screen md:grid md:grid-cols-[250px_1fr]">
       {/*_is space in tailwind and 1fr fill the remaining space in grid*/}
       <MainMenu className="hidden md:flex" />
       {!isDesktop && (
         <div className="sticky left-0 top-0 flex justify-between bg-background p-4 md:hidden">
           <MenuTitle />
-          <Drawer>
+          <Drawer direction="right">
             <DrawerTrigger>
               <MenuIcon />
             </DrawerTrigger>
