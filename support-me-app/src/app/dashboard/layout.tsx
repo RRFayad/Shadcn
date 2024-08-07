@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import MainMenu from "./components/main-menu";
 import MenuTitle from "./components/menu-title";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
@@ -9,6 +9,8 @@ import { useMediaQuery } from "@/hooks/use-media-query";
 
 function dashboardLayout({ children }: { children: React.ReactNode }) {
   const isDesktop = useMediaQuery("(min-width:768px)");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <div className="h-screen md:grid md:grid-cols-[250px_1fr]">
       {/*_is space in tailwind and 1fr fill the remaining space in grid*/}
@@ -16,7 +18,12 @@ function dashboardLayout({ children }: { children: React.ReactNode }) {
       {!isDesktop && (
         <div className="sticky left-0 top-0 flex justify-between bg-background p-4 md:hidden">
           <MenuTitle />
-          <Drawer direction="right">
+          <Drawer
+            direction="right"
+            open={mobileMenuOpen}
+            onOpenChange={(open) => setMobileMenuOpen(open)}
+            onClose={() => setMobileMenuOpen(false)}
+          >
             <DrawerTrigger>
               <MenuIcon />
             </DrawerTrigger>

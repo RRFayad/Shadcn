@@ -369,8 +369,14 @@ export default TeamsDistributionChart;
 ##### useMediaQuery
 
 - We implemented the drawer menu, but, as it was to be shown only for mobile, if we expanded our screen it would keep showing.
+
   - That's because, the menu comes from a portal
   - So, we need to use the Shadcn useMediaQuery hook to hide it (using logic to recognize the screen size)
+
+- We extended the Shadcn UI to recognize if the drawer have to be rendered from bottom (default) or from right
+
+- Now we want to adjust it to close after clicked
+  - used the context we created to handle eventHandlers in the menu item
 
 ## Shadcn/ui Components:
 
