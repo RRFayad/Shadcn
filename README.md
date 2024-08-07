@@ -379,13 +379,22 @@ export default TeamsDistributionChart;
 
   - used the context we created to handle eventHandlers in the menu item
 
-  #### Create the loading skeleton for the employees table
+#### Create the loading skeleton for the employees table
 
-  - Remember the Next loading page
-    - Is as simple as using the skeleton and defining its shape:
-      ` <Skeleton className="h-10 w-10 rounded-full" />`
+- Remember the Next loading page
+  - Is as simple as using the skeleton and defining its shape:
+    ` <Skeleton className="h-10 w-10 rounded-full" />`
 
-## Shadcn/ui Components:
+#### Data Table
+
+- Install table and check data table docs
+
+- n px shadcn-ui@latest add table
+- npm install @tanstack/react-table
+
+- We simply pasted the data-table example from the docs (creating a dataTable component)
+
+## Other Shadcn/ui Components:
 
 ##### Buttons
 
