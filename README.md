@@ -360,9 +360,17 @@ export default TeamsDistributionChart;
 
 ## 7. Extras
 
-Mobile menu
+#### Mobile menu
 
 - Started in the layout component, with a div the only renders in mobile and hiding the web menu (and updating the grid)
+
+#### Hamburger Menu (drawer component)
+
+##### useMediaQuery
+
+- We implemented the drawer menu, but, as it was to be shown only for mobile, if we expanded our screen it would keep showing.
+  - That's because, the menu comes from a portal
+  - So, we need to use the Shadcn useMediaQuery hook to hide it (using logic to recognize the screen size)
 
 ## Shadcn/ui Components:
 
