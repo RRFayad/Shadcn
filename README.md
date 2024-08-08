@@ -394,6 +394,12 @@ export default TeamsDistributionChart;
 
 - We simply pasted the data-table example from the docs (creating a dataTable component)
 
+#### Adding PAgination to the Data Table
+
+- We adjusted the data-table component, and almost copied the pagination from SHadcnUI docs (also extending it to add the first and last page)
+
+- Important to notice that it works with the tanstack react table
+
 ## Other Shadcn/ui Components:
 
 ##### Buttons
